@@ -5,6 +5,12 @@ from wtforms.validators import DataRequired, Email, ValidationError
 
 
 class SimulationForm(FlaskForm):
-    roomTemp = StringField("Room Temperature", validators=[DataRequired()])
-    roomPress = StringField("Room Pressure", validators=[DataRequired()])
+    roomTemp = StringField("Initial Temperature", validators=[DataRequired()])
+    roomLength = StringField("Room Length", validators=[DataRequired()])
+    roomBreadth = StringField("Room Breadth", validators=[DataRequired()])
+    roomHeight = StringField("Room Height", validators=[DataRequired()])
+    heatConductivity = StringField(
+        "Heat Conductivity of Walls", validators=[DataRequired()]
+    )
+
     submit = SubmitField("Evaluate")

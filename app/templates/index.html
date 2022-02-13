@@ -34,8 +34,8 @@
                         <!-- Text input-->
 
                         <div class="form-group">
-                            <label class="col-md-4 control-label"></label>
-                            <div class="col-md-4 inputGroupContainer">
+                            <label class="col-md-8 control-label"></label>
+                            <div class="col-md-8 inputGroupContainer">
                                 <div class="input-group">
                                     {{ wtf.form_field(form.roomTemp, class='form-control', placeholder='Room Temperature
                                     (degrees)') }}
@@ -44,19 +44,49 @@
                         </div>
 
                         <div class="form-group">
-                            <label class="col-md-4 control-label"></label>
-                            <div class="col-md-4 inputGroupContainer">
+                            <label class="col-md-8 control-label"></label>
+                            <div class="col-md-8 inputGroupContainer">
                                 <div class="input-group">
-                                    {{ wtf.form_field(form.roomPress, class='form-control', placeholder='Room Pressure
-                                    (mmHg)') }}
+                                    {{ wtf.form_field(form.roomLength, class='form-control', placeholder='Length of
+                                    Room') }}
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-8 control-label"></label>
+                            <div class="col-md-8 inputGroupContainer">
+                                <div class="input-group">
+                                    {{ wtf.form_field(form.roomBreadth, class='form-control', placeholder='Breadth of
+                                    Room') }}
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-8 control-label"></label>
+                            <div class="col-md-8 inputGroupContainer">
+                                <div class="input-group">
+                                    {{ wtf.form_field(form.roomHeight, class='form-control', placeholder='Height of
+                                    Room') }}
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-8 control-label"></label>
+                            <div class="col-md-8 inputGroupContainer">
+                                <div class="input-group">
+                                    {{ wtf.form_field(form.heatConductivity, class='form-control', placeholder='Heat
+                                    Conductivity') }}
                                 </div>
                             </div>
                         </div>
 
                         <!-- Button -->
                         <div class="form-group">
-                            <label class="col-md-4 control-label"></label>
-                            <div class="col-md-4"><br>
+                            <label class="col-md-8 control-label"></label>
+                            <div class="col-md-8"><br>
                                 &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
                                 <button type="submit" class="btn btn-warning">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
                                     {{
@@ -70,7 +100,9 @@
             </div>
             <div class="col">
                 {% if result %}
-                <span><img src={{result}} alt="this rectangle moves" width="250" /></span>
+                <span><img src={{result}} alt="this rectangle moves" width="250" /></span> <br>
+                <!-- <p>Pi: {{pi}}</p>
+                <p>Radius: {{radius}}</p> -->
                 {% endif %}
             </div>
         </div>
