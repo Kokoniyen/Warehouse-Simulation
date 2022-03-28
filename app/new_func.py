@@ -157,12 +157,12 @@ def get_temp_varies(
 
     print("Average temp varies between ", min_temp, " to ", max_temp)
 
-    plt.figure(figsize=(20, 18))
+    plt.figure(figsize=(7, 6))
     plt.pcolormesh(riskmap)
     plt.title("Riskmap")
 
     # contour plot
-    plt.figure(figsize=(20, 18))
+    plt.figure(figsize=(7, 6))
     plt.contourf(riskmap)
     plt.title("Contour map")
 
