@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Warehouse Simulation</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/index">Warehouse Simulation</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+                aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    {% block content %}
+    {% import "bootstrap/wtf.html" as wtf %}
+    <div>
+        <h1><b>Warehouse form</b></h1>
+        <div class="row">
+            <div class="col">
+
+                <form id="form_pallet">
+                    {{ form.hidden_tag() }}
+                    <fieldset>
+                        <button type="submit" class="btn btn-success">Pallet Location</button>
+                    </fieldset>
+                </form>
+
+                <form class="well form-horizontal" action="" method="post" id="contact_form">
+                    {{ form.hidden_tag() }}
+                    <fieldset>
+                        <!-- Button -->
+                        <div class="form-group">
+                            <label class="col-md-8 control-label"></label>
+                            <div class="col-md-8"><br>
+                                &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                                <button type="submit" class="btn btn-warning">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                                    {{
+                                    wtf.form_field(form.submit, class='btn btn-warning') }}<span
+                                        class="glyphicon glyphicon-send"></span>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</button>
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+
+            </div>
+            <div class="col">
+                <div class="grid" id="gridView">
+                    <div class="grid_container" id="grid_container">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    {% endblock %}
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const STEPPER = 'stepper'
+            const MAXIMUM_NUMBER_COLUMNS = 10
+
+            const gridView = document.getElementById('gridView')
+
+            const form = document.getElementById("form")
+            const form_pallet = document.getElementById("form_pallet")
+            const form_door = document.getElementById("form_door")
+
+
+            const container = document.getElementById("grid_container")
+            const undoButton = document.getElementById('undo')
+
+            let arrayOfClickedRows = []
+
+
+            //hide the gridView
+
+            gridView.style.display = 'none'
+
+            for (let indexRow = 0; indexRow < MAXIMUM_NUMBER_COLUMNS; indexRow++) {
+                const row = document.createElement('div')
+                row.classList = 'row'
+                for (let index = 0; index < MAXIMUM_NUMBER_COLUMNS; index++) {
+                    //colums here
+                    const column = document.createElement('div')
+                    column.classList = 'col-1 p-2 border border-2 '
+                    column.style.cursor = 'pointer'
+                    column.innerText = `R${indexRow}C${index}`
+                    column.onclick = () => {
+                        const columnIndex = arrayOfClickedRows.indexOf(`R${indexRow}C${index}`)
+                        console.log(columnIndex)
+
+                        if (columnIndex > -1) {
+                            arrayOfClickedRows = arrayOfClickedRows.filter(item => item !== `R${indexRow}C${index}`)
+                            column.style.background = 'transparent'
+                            console.log({ removed: arrayOfClickedRows })
+                            return
+                        }
+
+                        column.style.background = 'red'
+                        arrayOfClickedRows.push(`R${indexRow}C${index}`)
+                        console.log({ added: arrayOfClickedRows })
+                    }
+                    row.appendChild(column)
+
+                }
+
+                container.appendChild(row);
+
+                //rows here
+            }
+
+            form_pallet.onsubmit = (event) => {
+                console.log(event)
+                event.preventDefault()
+
+                const formData = new FormData(event.target);
+                const formProps = Object.fromEntries(formData);
+
+                // form.style.display = 'none'
+                gridView.style.display = 'grid'
+            }
+
+        }, false);
+
+    </script>
+
+</body>
+
+</html>

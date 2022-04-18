@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Warehouse Simulation</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/index">Warehouse Simulation</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+                aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    {% block content %}
+    {% import "bootstrap/wtf.html" as wtf %}
+    <div style="margin-top: 10px;">
+        <h1><b>Warehouse form</b></h1>
+        <div class="row">
+            <div class="col">
+                <form id="form">
+                    {{ form.hidden_tag() }}
+                    <fieldset>
+                        <button type="submit" class="btn btn-success">Window Location</button>
+                    </fieldset>
+                </form>
+
+                <form class="well form-horizontal" action="" method="post" id="contact_form">
+                    {{ form.hidden_tag() }}
+                    <fieldset>
+                        <!-- Button -->
+                        <div class="form-group">
+                            <label class="col-md-8 control-label"></label>
+                            <div class="col-md-8"><br>
+                                &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                                <button type="submit" class="btn btn-warning">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                                    {{
+                                    wtf.form_field(form.submit, class='btn btn-warning') }}<span
+                                        class="glyphicon glyphicon-send"></span>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</button>
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+
+            </div>
+            <div class="col">
+                <div class="grid" id="gridView">
+                    <div class="grid_container" id="grid_container">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    {% endblock %}
+    <script src="{{url_for('static', filename='main.js')}}"></script>
+
+</body>
+
+</html>

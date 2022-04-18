@@ -12,5 +12,22 @@ class SimulationForm(FlaskForm):
     heatConductivity = StringField(
         "Heat Conductivity of Walls", validators=[DataRequired()]
     )
+    numHours = StringField("Number of Hours", validators=[DataRequired()])
 
+    numWindows = StringField("Number of Windows", validators=[DataRequired()])
+    numPallets = StringField("Number of Pallets", validators=[DataRequired()])
+    numDoors = StringField("Number of Doors", validators=[DataRequired()])
+    numVents = StringField("Number of Vents", validators=[DataRequired()])
+    cont_inue = SubmitField("Continue")
+
+
+class GridForm(FlaskForm):
+    submit = SubmitField("Continue")
+
+
+class PalletForm(FlaskForm):
+    submit = SubmitField("Continue")
+
+
+class DoorForm(FlaskForm):
     submit = SubmitField("Evaluate")

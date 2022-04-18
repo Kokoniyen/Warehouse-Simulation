@@ -10,7 +10,7 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">Warehouse Simulation</a>
+            <a class="navbar-brand" href="/index">Warehouse Simulation</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
                 aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -24,7 +24,7 @@
     </nav>
     {% block content %}
     {% import "bootstrap/wtf.html" as wtf %}
-    <div class="container">
+    <div class="container" , style="margin-top: 10px;">
         <h2><b>Run Simulation</b></h2>
         <div class="row">
             <div class="col">
@@ -83,6 +83,53 @@
                             </div>
                         </div>
 
+                        <div class="form-group">
+                            <label class="col-md-8 control-label"></label>
+                            <div class="col-md-8 inputGroupContainer">
+                                <div class="input-group">
+                                    {{ wtf.form_field(form.numHours, class='form-control', placeholder='hours ...') }}
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-8 control-label"></label>
+                            <div class="col-md-8 inputGroupContainer">
+                                <div class="input-group">
+                                    {{ wtf.form_field(form.numWindows, class='form-control', placeholder='windows ...')
+                                    }}
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-8 control-label"></label>
+                            <div class="col-md-8 inputGroupContainer">
+                                <div class="input-group">
+                                    {{ wtf.form_field(form.numPallets, class='form-control', placeholder='pallets ...')
+                                    }}
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-8 control-label"></label>
+                            <div class="col-md-8 inputGroupContainer">
+                                <div class="input-group">
+                                    {{ wtf.form_field(form.numDoors, class='form-control', placeholder='doors ...') }}
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-8 control-label"></label>
+                            <div class="col-md-8 inputGroupContainer">
+                                <div class="input-group">
+                                    {{ wtf.form_field(form.numVents, class='form-control', placeholder='vents ...') }}
+                                </div>
+                            </div>
+                        </div>
+
                         <!-- Button -->
                         <div class="form-group">
                             <label class="col-md-8 control-label"></label>
@@ -90,7 +137,7 @@
                                 &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
                                 <button type="submit" class="btn btn-warning">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
                                     {{
-                                    wtf.form_field(form.submit, class='btn btn-warning') }}<span
+                                    wtf.form_field(form.cont_inue, class='btn btn-warning') }}<span
                                         class="glyphicon glyphicon-send"></span>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</button>
                             </div>
                         </div>
@@ -101,8 +148,6 @@
             <div class="col">
                 {% if result %}
                 <span><img src={{result}} alt="this rectangle moves" width="250" /></span> <br>
-                <!-- <p>Pi: {{pi}}</p>
-                <p>Radius: {{radius}}</p> -->
                 {% endif %}
             </div>
         </div>
